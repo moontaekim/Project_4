@@ -26,6 +26,7 @@ class Api::UsersController < ApplicationController
     render status: :ok
   end
 
+  
   private
 
   def user_params
