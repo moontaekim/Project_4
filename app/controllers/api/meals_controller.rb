@@ -11,8 +11,8 @@ class Api::MealsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    render json: @user
+    @meal = User.find(params[:user_id]).meals.find(params[:id])
+    render json: @meal
   end
 
   def update
