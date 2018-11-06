@@ -6,8 +6,8 @@ class Api::MealsController < ApplicationController
   end
 
   def create
-    @user = User.create!(user_params)
-    render json: @user
+    @meal = User.find(params[:user_id]).meals.create!(meal_params)
+    render json: @meal
   end
 
   def show
@@ -29,8 +29,8 @@ class Api::MealsController < ApplicationController
   
   private
 
-  def user_params
-    params.require(:user).permit(:name, :cal_goal)
+  def meal_params
+    params.require(:meal).permit(:description, :date, :time)
   end
 
 end
