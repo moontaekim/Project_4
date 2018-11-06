@@ -22,7 +22,7 @@ class Api::MealsController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id]).delete
+    @meal = Meal.find(params[:id]).delete
     render status: :ok
   end
 
