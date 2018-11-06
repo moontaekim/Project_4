@@ -7,13 +7,14 @@ class Api::ItemsController < ApplicationController
   end
 
   def create
-    @meal = User.find(params[:user_id]).meals.create!(meal_params)
-    render json: @meal
+    @meal = User.find(params[:user_id]).meals
+    @item = @meal.find(params[:meal_id]).items.create!(item_params)
+    render json: @item
   end
 
   def show
-    @meal = User.find(params[:user_id]).meals.find(params[:id])
-    render json: @meal
+    @item = User.find(params[:user_id]).meals.find(params[:meal_id]).items.find(params[:id])
+    render json: @item
   end
 
   def update
@@ -30,8 +31,8 @@ class Api::ItemsController < ApplicationController
   
   private
 
-  def meal_params
-    params.require(:meal).permit(:description, :date, :time)
+  def item_params
+    params.require(:item).permit(:name, :calorie, :serving)
   end
 
 end

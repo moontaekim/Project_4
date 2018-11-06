@@ -22,5 +22,7 @@ meal_three = Meal.create({ description: 'Dinner', date: 20181106, time: '06:00PM
 
 
 item_one = Item.create({ serving: 2, calorie: 500, name: "Big Mac", meal_id: meal_one.id  })
+item_four = Item.create({ serving: 2, calorie: 700, name: "French Fries", meal_id: meal_one.id  })
+
 item_two = Item.create({ serving: 1, calorie: 100, name: "Chicken Salad", meal_id: meal_two.id  })
 item_three = Item.create({ serving: 3, calorie: 1000, name: "Pizza", meal_id: meal_three.id  })
