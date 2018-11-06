@@ -16,9 +16,9 @@ class Api::MealsController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-    @user.update!(user_params)
-    render json: @user
+    @meal = Meal.find(params[:id])
+    @meal.update!(meal_params)
+    render json: @meal
   end
 
   def destroy
