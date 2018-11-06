@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+User.destroy_all
+Meal.destroy_all
+Item.destroy_all
+
+
+user_one = User.create({ name: 'Moon', cal_goal: 1800 })
+
+meal_one = Meal.create({ description: 'Breakfast', date: 20181106, time: '11:00AM', user_id: user_one.id  })
+
+item_one = Item.create({ serving: 2, calorie: 500, name: "Big Mac", meal_id: meal_one.id  })

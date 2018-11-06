@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  serving: 1
+  calorie: 1
+  name: MyString
+  meal: one
+
+two:
+  serving: 1
+  calorie: 1
+  name: MyString
+  meal: two
