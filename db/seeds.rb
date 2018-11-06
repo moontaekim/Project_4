@@ -14,6 +14,13 @@ Item.destroy_all
 
 user_one = User.create({ name: 'Moon', cal_goal: 1800 })
 
-meal_one = Meal.create({ description: 'Breakfast', date: 20181106, time: '11:00AM', user_id: user_one.id  })
+meal_one = Meal.create({ description: 'Breakfast', date: 20181106, time: '09:00AM', user_id: user_one.id  })
+meal_two = Meal.create({ description: 'Lunch', date: 20181106, time: '12:00PM', user_id: user_one.id  })
+meal_three = Meal.create({ description: 'Dinner', date: 20181106, time: '06:00PM', user_id: user_one.id  })
+
+
+
 
 item_one = Item.create({ serving: 2, calorie: 500, name: "Big Mac", meal_id: meal_one.id  })
+item_two = Item.create({ serving: 1, calorie: 100, name: "Chicken Salad", meal_id: meal_two.id  })
+item_three = Item.create({ serving: 3, calorie: 1000, name: "Pizza", meal_id: meal_three.id  })
