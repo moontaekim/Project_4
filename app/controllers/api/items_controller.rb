@@ -18,13 +18,13 @@ class Api::ItemsController < ApplicationController
   end
 
   def update
-    @meal = Meal.find(params[:id])
-    @meal.update!(meal_params)
-    render json: @meal
+    @item = Item.find(params[:id])
+    @item.update!(item_params)
+    render json: @item
   end
 
   def destroy
-    @meal = Meal.find(params[:id]).delete
+    @item = Item.find(params[:id]).delete
     render status: :ok
   end
 
