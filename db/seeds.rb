@@ -19,10 +19,16 @@ meal_two = Meal.create({ description: 'Lunch', date: 20181106, time: '12:00PM', 
 meal_three = Meal.create({ description: 'Dinner', date: 20181106, time: '06:00PM', user_id: user_one.id  })
 
 
+meal_four = Meal.create({ description: 'Breakfast', date: 20181107, time: '09:00AM', user_id: user_one.id  })
+meal_five = Meal.create({ description: 'Lunch', date: 20181107, time: '01:00PM', user_id: user_one.id  })
+
+
+
+
 
 
 item_one = Item.create({ serving: 2, calorie: 500, name: "Big Mac", meal_id: meal_one.id  })
-item_four = Item.create({ serving: 2, calorie: 700, name: "French Fries", meal_id: meal_one.id  })
-
 item_two = Item.create({ serving: 1, calorie: 100, name: "Chicken Salad", meal_id: meal_two.id  })
 item_three = Item.create({ serving: 3, calorie: 1000, name: "Pizza", meal_id: meal_three.id  })
+item_four = Item.create({ serving: 2, calorie: 700, name: "French Fries", meal_id: meal_one.id  })
+item_five = Item.create({ serving: 1, calorie: 1700, name: "Waffles", meal_id: meal_four.id  })
