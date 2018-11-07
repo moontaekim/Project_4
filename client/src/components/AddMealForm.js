@@ -4,7 +4,11 @@ import axios from 'axios'
 
 export default class AddMealForm extends Component {
   state = {
-    newMeal: {}
+    newMeal: {
+      description: '',
+      date: '',
+      time: ''
+    }
   }
 
   handleSubmit = async (event) => {
@@ -13,23 +17,22 @@ export default class AddMealForm extends Component {
   }
 
   handleChange = (event) => {
-    const newMeal = {...this.state.newUser}
+    const newMeal = {...this.state.newMeal}
     newMeal[event.target.name]= event.target.value
     this.setState({ newMeal })
   }
 
-  addMeal = async (newUser) => {
-    const response = await axios.post('/api/users', newUser)
-    const users = [...this.state.users]
-    users.push(response.data)
-    this.setState({ users })
+  addMeal = async (newMeal) => {
+    const response = await axios.post(`/api/users/${this.props.userId}/meals`, newMeal)
+    this.setState({ newMeal:response.data })
+    this.props.fetchUserMeals()
   }
 
   render() {
 
     return (
       <div>
-        <form onSubmit={this.props.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <input type='text' name='description'
             value={this.state.newMeal.description}
             onChange={this.handleChange}

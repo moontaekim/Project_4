@@ -53,7 +53,10 @@ export default class MealPage extends Component {
       <div>
         <div>{this.state.dateToday}</div>
         {/* <Link>(+) add meal</Link> */}
-        <AddMealForm/>
+        <AddMealForm 
+        fetchUserMeals = {this.fetchUserMeals}
+        userId = {this.props.userId}
+        />
         <div>{todaysMeals}</div>
       </div>
     )
