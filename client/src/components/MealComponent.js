@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import AddMealForm from './AddMealForm';
 
 
 
@@ -8,7 +9,8 @@ export default class MealPage extends Component {
   state = {
     dates: [],
     dateToday: "",
-    meals:[]
+    meals:[],
+    addMeal: false
     }
 
   getTodaysDate = async () => {
@@ -31,6 +33,9 @@ export default class MealPage extends Component {
     this.setState({meals: response.data})
   }
   
+  toggleAddMealForm = () => {
+    this.setState({ addMeal: !this.state.addMeal })
+  }
   
   render() {
 
@@ -47,6 +52,8 @@ export default class MealPage extends Component {
     return (
       <div>
         <div>{this.state.dateToday}</div>
+        {/* <Link>(+) add meal</Link> */}
+        <AddMealForm/>
         <div>{todaysMeals}</div>
       </div>
     )

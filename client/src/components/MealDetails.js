@@ -10,7 +10,6 @@ export default class MealDetails extends Component {
     const userId = this.props.match.params.user_id
     const mealId = this.props.match.params.meal_id
     const response = await axios.get(`/api/users/${userId}/meals/${mealId}/items`)
-    console.log(response)
     this.setState({items: response.data}) 
   }
 
@@ -30,7 +29,8 @@ export default class MealDetails extends Component {
 
     return (
       <div>
-        {itemsList}
+        <div>(+) add food</div>
+        <div>{itemsList}</div>
       </div>
     )
   }
