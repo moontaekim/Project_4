@@ -19,9 +19,18 @@ export default class MealDetails extends Component {
   }
   
   render() {
+
+    const itemsList = this.state.items.map((item) => {
+      return(
+        <div>
+          {item.name}
+        </div>
+      )
+    })
+
     return (
       <div>
-        MEAL DETAILS
+        {itemsList}
       </div>
     )
   }

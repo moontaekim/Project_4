@@ -23,10 +23,6 @@ meal_four = Meal.create({ description: 'Breakfast', date: 20181107, time: '09:00
 meal_five = Meal.create({ description: 'Lunch', date: 20181107, time: '01:00PM', user_id: user_one.id  })
 
 
-
-
-
-
 item_one = Item.create({ serving: 2, calorie: 500, name: "Big Mac", meal_id: meal_one.id  })
 item_two = Item.create({ serving: 1, calorie: 100, name: "Chicken Salad", meal_id: meal_two.id  })
 item_three = Item.create({ serving: 3, calorie: 1000, name: "Pizza", meal_id: meal_three.id  })
