@@ -46,7 +46,6 @@ export default class MealPage extends Component {
 
     return (
       <div>
-        {/* <Link to */}
         <div>{this.state.dateToday}</div>
         <div>{todaysMeals}</div>
       </div>
