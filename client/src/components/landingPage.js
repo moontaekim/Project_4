@@ -23,6 +23,7 @@ export default class landingPage extends Component {
         <Link to={`/users/${user.id}`}>User Pagess</Link>
       )
     })
+    
     return (
       <div>
         {users}
