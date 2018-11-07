@@ -18,9 +18,14 @@ export default class landingPage extends Component {
   }
   
   render() {
+    const users = this.state.users.map((user) => {
+      return(
+        <Link to={`/users/${user.id}`}>User Pagess</Link>
+      )
+    })
     return (
       <div>
-        LANDING PAGE!!!!
+        {users}
       </div>
     )
   }
