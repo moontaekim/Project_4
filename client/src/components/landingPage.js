@@ -16,6 +16,7 @@ export default class landingPage extends Component {
     const response = await axios.get('/api/users')
     this.setState({users: response.data})
   }
+  
   render() {
     return (
       <div>
