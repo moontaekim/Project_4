@@ -45,7 +45,7 @@ export default class AddMealForm extends Component {
             value={this.state.newMeal.time}
             onChange={this.handleChange}
           />
-          <input type='submit' value='Add Food' />
+          <input type='submit' value='Add Meal' />
         </form>
       </div>
     )

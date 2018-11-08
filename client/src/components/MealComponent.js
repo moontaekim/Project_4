@@ -1,26 +1,25 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import AddMealForm from './AddMealForm';
-
 
 
 export default class MealPage extends Component {
   state = {
     dates: [],
-    dateToday: "",
-    meals:[],
+    selectedDate: "",
+    meals: [],
     addMeal: false
-    }
+  }
 
   getTodaysDate = async () => {
     const month = await new Date().getMonth()
     var day = await new Date().getDate()
-    if(day < 10){
+    if (day < 10) {
       var day = `0` + `${day}`
     }
     const year = await new Date().getFullYear()
-    this.setState({dateToday: `${year}-${month+1}-${day}`})
+    this.setState({ selectedDate: `${year}-${month + 1}-${day}` })
   }
 
   componentDidMount = async () => {
@@ -30,20 +29,24 @@ export default class MealPage extends Component {
 
   fetchUserMeals = async () => {
     const response = await axios.get(`/api/users/${this.props.userId}/meals`)
-    this.setState({meals: response.data})
+    this.setState({ meals: response.data })
   }
-  
+
   toggleAddMealForm = () => {
     this.setState({ addMeal: !this.state.addMeal })
   }
-  
+
+  handleChange = (event) => {
+    this.setState({ selectedDate: event.target.value })
+  }
+
   render() {
 
     const todaysMeals = this.state.meals.map((meal) => {
-      if(meal.date === this.state.dateToday){
-        return(
+      if (meal.date === this.state.selectedDate) {
+        return (
           <div>
-          <Link to={`/users/${this.props.userId}/meals/${meal.id}`}>{meal.description}</Link>
+            <Link to={`/users/${this.props.userId}/meals/${meal.id}`}>{meal.description}</Link>
           </div>
         )
       }
@@ -51,12 +54,16 @@ export default class MealPage extends Component {
 
     return (
       <div>
-        <div>{this.state.dateToday}</div>
-        {/* <Link>(+) add meal</Link> */}
-        <AddMealForm 
-        fetchUserMeals = {this.fetchUserMeals}
-        userId = {this.props.userId}
+        <input type='date' name='date'
+        value={this.state.selectedDate}
+        onChange={this.handleChange}
         />
+
+        <AddMealForm
+          fetchUserMeals={this.fetchUserMeals}
+          userId={this.props.userId}
+        />
+
         <div>{todaysMeals}</div>
       </div>
     )
