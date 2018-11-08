@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  namespace :api do
+
+  get '/api/users/:user_id/meals/:meal_id/items/search', to: 'items#search'  
+
+namespace :api do
     resources :users do
       resources :meals do
-        resources :items
+        resources :items 
+        
       end
     end
   end

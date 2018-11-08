@@ -1,5 +1,4 @@
 class Api::ItemsController < ApplicationController
-  include HTTParty
 
   def index
     @meals = User.find(params[:user_id]).meals
@@ -8,18 +7,12 @@ class Api::ItemsController < ApplicationController
   end
 
   def create
-    headers = {
-      "x-app-id" => "a4f47d7e",
-      "x-app-key" => "bcf4edaee1a304522b9e99e7e984a8f8"
-    }
-    @items = HTTParty.post("https://trackapi.nutritionix.com/v2/natural/nutrients", {:headers => headers})
     @meal = User.find(params[:user_id]).meals
     @item = @meal.find(params[:meal_id]).items.create!(item_params)
     render json: @item
   end
 
   def show
-   
     @item = User.find(params[:user_id]).meals.find(params[:meal_id]).items.find(params[:id])
     render json: @item
   end
@@ -43,3 +36,18 @@ class Api::ItemsController < ApplicationController
   end
 
 end
+
+
+
+# include HTTParty
+
+# def create
+#    headers = {
+#     "x-app-id" => "a4f47d7e",
+#     "x-app-key" => "bcf4edaee1a304522b9e99e7e984a8f8"
+#   }
+#   @items = HTTParty.post("https://trackapi.nutritionix.com/v2/natural/nutrients", {:headers => headers})
+#   # @meal = User.find(params[:user_id]).meals
+#   # @item = @meal.find(params[:meal_id]).items.create!(item_params)
+#   render json: @items
+# end
