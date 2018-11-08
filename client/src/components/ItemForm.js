@@ -8,27 +8,25 @@ export default class ItemForm extends Component {
       name: '',
       calorie: '',
       serving: ''
-    },
-    searchedItem: {
-      query: ''
     }
+    // searchedItem: {
+    //   query: ''
+    // }
   }
 
   handleChange = (event) => {
     const newItem = { ...this.state.newItem }
-    const searchedItem = { ...this.state.searchedItem }
-    searchedItem[event.target.name] = event.target.value
-
+    // const searchedItem = { ...this.state.searchedItem }
+    // searchedItem[event.target.name] = event.target.value
     newItem[event.target.name] = event.target.value
     this.setState({ newItem })
-    this.setState({ searchedItem })
-
+    // this.setState({ searchedItem })
   }
 
   handleSubmit = async (event) => {
     event.preventDefault()
     this.addItem(this.state.newItem)
-    this.searchFood(this.state.searchedItem)
+    // this.searchFood(this.state.searchedItem)
   }
 
   addItem = async (newItem) => {
@@ -39,28 +37,22 @@ export default class ItemForm extends Component {
     this.props.fetchItems()
   }
 
-  searchFood = async (foodAPI) => {
-    const response = await axios.post(`/api/items/search`, foodAPI)
-    this.setState({ searchedItem: response.data })
-    this.props.fetchItems()
-  }
-
-  // handleChangee = (event) => {
-  //   const searchedItem = { ...this.state.searchedItem }
-  //   searchedItem[event.target.name] = event.target.value
-  //   this.setState({ searchedItem })
+  // searchFood = async (foodAPI) => {
+  //   const response = await axios.post(`/api/items/search`, foodAPI)
+  //   this.setState({ searchedItem: response.data })
+  //   this.props.fetchItems()
   // }
 
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        {/* <form onSubmit={this.handleSubmit}>
           <input type='query' name='query'
             value={this.state.searchedItem.name}
             onChange={this.handleChange}
           />
           <input type='submit' value='Add Meal'/>
-        </form>
+        </form> */}
 
 
 

@@ -42,10 +42,10 @@ export default class MealPage extends Component {
 
   render() {
 
-    const todaysMeals = this.state.meals.map((meal) => {
+    const todaysMeals = this.state.meals.map((meal, i) => {
       if (meal.date === this.state.selectedDate) {
         return (
-          <div>
+          <div key={i}>
             <Link to={`/users/${this.props.userId}/meals/${meal.id}`}>{meal.description}</Link>
           </div>
         )
@@ -58,7 +58,6 @@ export default class MealPage extends Component {
         value={this.state.selectedDate}
         onChange={this.handleChange}
         />
-
         <AddMealForm
           fetchUserMeals={this.fetchUserMeals}
           userId={this.props.userId}
