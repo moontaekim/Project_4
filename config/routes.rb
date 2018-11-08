@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  get '/api/users/:user_id/meals/:meal_id/items/search', to: 'items#search'  
+post '/api/items/search', to: 'api/itemapi#search'  
+
 
 namespace :api do
     resources :users do
