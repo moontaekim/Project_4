@@ -24,6 +24,7 @@ export default class ItemApiSearch extends Component {
     const searchedItem = {...this.state.searchedItem}
     searchedItem.food_name = response.data.foods[0].food_name
     searchedItem.nf_calories = response.data.foods[0].nf_calories
+    searchedItem.servings = searchedItem.servings
     this.setState({ searchedItem })
     this.postItemToMeal(this.state.searchedItem)
   }
@@ -42,6 +43,10 @@ export default class ItemApiSearch extends Component {
         <form onSubmit={this.handleSubmit}>
           <input type='query' name='query'
             value={this.state.searchedItem.name}
+            onChange={this.handleChange}
+          />
+          <input type='integer' name='servings'
+            value={this.state.searchedItem.servings}
             onChange={this.handleChange}
           />
           <input type='submit' value='Add Meal' />
