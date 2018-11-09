@@ -15,7 +15,6 @@ export default class MealDetails extends Component {
     this.setState({ items: response.data })
   }
 
-
   componentDidMount = async () => {
     await this.fetchItems()
   }
@@ -34,6 +33,8 @@ export default class MealDetails extends Component {
       <div>
         <ItemApiSearch
           fetchItems={this.fetchItems}
+          mealId={this.props.match.params.meal_id}
+          userId={this.props.match.params.user_id}
         />
         <ItemForm
           items={this.state.items}

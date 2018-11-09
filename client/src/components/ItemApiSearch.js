@@ -21,10 +21,24 @@ export default class ItemApiSearch extends Component {
 
   searchFood = async (foodAPI) => {
     const response = await axios.post(`/api/items/search`, foodAPI)
-    this.setState({ searchedItem: response.data })
-    this.props.fetchItems()
+    // const oneItem = {
+    //                   food_name: response.data.foods[0].food_name,
+    //                   nf_calories: response.data.foods[0].nf_calories
+    //                 }
+    const searchedItem = {...this.state.searchedItem}
+    searchedItem.food_name = response.data.foods[0].food_name
+    searchedItem.nf_calories = response.data.foods[0].nf_calories
+    this.setState({ searchedItem })
+    // this.postItemToMeal(oneItem)
   }
-
+//have to only get the data for 1 food item from response and add that to data
+  // postItemToMeal = async (oneItem) => {
+  //   const userId = this.props.userId
+  //   const mealId = this.props.mealId
+  //   const response = await axios.post(`/api/users/${userId}/meals/${mealId}/items`, oneItem)
+  //   this.setState({ searchedItem: response.data })
+  //   this.props.fetchItems()
+  // }
 
   render() {
     return (
