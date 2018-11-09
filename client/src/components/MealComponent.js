@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
 import AddMealForm from './AddMealForm';
 import MealDetails from './MealDetails';
+import styled from 'styled-components'
+import { Accordion, Icon } from 'semantic-ui-react'
 
 
 export default class MealPage extends Component {
@@ -10,7 +11,16 @@ export default class MealPage extends Component {
     dates: [],
     selectedDate: "",
     meals: [],
-    addMeal: false
+    addMeal: false,
+    activeIndex: 0
+  }
+
+  handleClick = (e, titleProps) => {
+    const { index } = titleProps
+    const { activeIndex } = this.state
+    const newIndex = activeIndex === index ? -1 : index
+
+    this.setState({ activeIndex: newIndex })
   }
 
   getTodaysDate = async () => {
@@ -42,18 +52,23 @@ export default class MealPage extends Component {
   }
 
   render() {
+    const { activeIndex } = this.state
 
     const todaysMeals = this.state.meals.map((meal, i) => {
       if (meal.date === this.state.selectedDate) {
         return (
-          <div key={i}>
-            {/* <Link to={`/users/${this.props.userId}/meals/${meal.id}`}>{meal.description}</Link> */}
-            {meal.description}
-            <MealDetails 
-            userId = {this.props.userId}
-            mealId = {meal.id}
-            />
-          </div>
+          <Accordion key={i}>
+            <Accordion.Title active={activeIndex === i} index={i} onClick={this.handleClick}>
+              <Icon name='dropdown' />
+                {meal.description}
+            </Accordion.Title>
+            <Accordion.Content active={activeIndex === i}>
+              <MealDetails 
+              userId = {this.props.userId}
+              mealId = {meal.id}
+              />
+            </Accordion.Content>
+          </Accordion>
         )
       }
     })
