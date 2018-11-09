@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import axios from 'axios'
 
 
-export default class landingPage extends Component {
+export default class LandingPage extends Component {
   state = {
     users: []
   }

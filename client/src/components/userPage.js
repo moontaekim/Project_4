@@ -3,7 +3,7 @@ import axios from 'axios'
 import MealComponent from './MealComponent';
 
 
-export default class userPage extends Component {
+export default class UserPage extends Component {
   state = {
     meals: [],
     user: {},
