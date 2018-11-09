@@ -8,15 +8,15 @@ export default class MealDetails extends Component {
     items: []
   }
 
+  componentDidMount = async () => {
+    await this.fetchItems()
+  }
+
   fetchItems = async () => {
     const userId = this.props.userId
     const mealId = this.props.mealId
     const response = await axios.get(`/api/users/${userId}/meals/${mealId}/items`)
     this.setState({ items: response.data })
-  }
-
-  componentDidMount = async () => {
-    await this.fetchItems()
   }
 
   render() {

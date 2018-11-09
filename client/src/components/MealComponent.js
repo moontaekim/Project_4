@@ -3,15 +3,12 @@ import axios from 'axios'
 import AddMealForm from './AddMealForm';
 import MealDetails from './MealDetails';
 import styled from 'styled-components'
-import { Accordion, Icon } from 'semantic-ui-react'
+import { Accordion, Icon, Button } from 'semantic-ui-react'
 
 
 export default class MealPage extends Component {
   state = {
-    dates: [],
-    selectedDate: "",
-    meals: [],
-    addMeal: false,
+    addMeal: true,
     activeIndex: 0
   }
 
@@ -23,39 +20,15 @@ export default class MealPage extends Component {
     this.setState({ activeIndex: newIndex })
   }
 
-  getTodaysDate = async () => {
-    const month = await new Date().getMonth()
-    var day = await new Date().getDate()
-    if (day < 10) {
-      var day = `0` + `${day}`
-    }
-    const year = await new Date().getFullYear()
-    this.setState({ selectedDate: `${year}-${month + 1}-${day}` })
-  }
-
-  componentDidMount = async () => {
-    await this.getTodaysDate()
-    await this.fetchUserMeals()
-  }
-
-  fetchUserMeals = async () => {
-    const response = await axios.get(`/api/users/${this.props.userId}/meals`)
-    this.setState({ meals: response.data })
-  }
-
   toggleAddMealForm = () => {
     this.setState({ addMeal: !this.state.addMeal })
-  }
-
-  handleChange = (event) => {
-    this.setState({ selectedDate: event.target.value })
   }
 
   render() {
     const { activeIndex } = this.state
 
-    const todaysMeals = this.state.meals.map((meal, i) => {
-      if (meal.date === this.state.selectedDate) {
+    const todaysMeals = this.props.meals.map((meal, i) => {
+      if (meal.date === this.props.selectedDate) {
         return (
           <Accordion key={i}>
             <Accordion.Title active={activeIndex === i} index={i} onClick={this.handleClick}>
@@ -75,14 +48,13 @@ export default class MealPage extends Component {
 
     return (
       <div>
-        <input type='date' name='date'
-        value={this.state.selectedDate}
-        onChange={this.handleChange}
-        />
-        <AddMealForm
-          fetchUserMeals={this.fetchUserMeals}
+        {this.state.addMeal ? null : <AddMealForm
+          fetchData={this.props.fetchData}
           userId={this.props.userId}
-        />
+        />}
+        <Button circular onClick={this.toggleAddMealForm}>
+          {this.state.toggleAddMealForm ? 'Go Back' : 'Add Meal'}
+        </Button>
 
         <div>{todaysMeals}</div>
       </div>

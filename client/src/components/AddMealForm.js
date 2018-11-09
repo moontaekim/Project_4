@@ -25,7 +25,7 @@ export default class AddMealForm extends Component {
   addMeal = async (newMeal) => {
     const response = await axios.post(`/api/users/${this.props.userId}/meals`, newMeal)
     this.setState({ newMeal:response.data })
-    this.props.fetchUserMeals()
+    this.props.fetchData()
   }
 
   render() {

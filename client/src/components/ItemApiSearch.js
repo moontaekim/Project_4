@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Redirect} from 'react-router-dom'
 import axios from 'axios'
 
 export default class ItemApiSearch extends Component {
@@ -21,6 +22,11 @@ export default class ItemApiSearch extends Component {
 
   searchFood = async (foodAPI) => {
     const response = await axios.post(`/api/items/search`, foodAPI)
+    if(response.data.message === "We couldn't match any of your foods"){
+      alert("We couldn't match any of your foods")
+      return <Redirect to={`/users/${this.props.userId}`}/>
+
+    }
     const searchedItem = { ...this.state.searchedItem }
     searchedItem.food_name = response.data.foods[0].food_name
     searchedItem.nf_calories = response.data.foods[0].nf_calories

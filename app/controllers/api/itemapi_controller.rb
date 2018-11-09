@@ -3,8 +3,8 @@ class Api::ItemapiController < ApplicationController
 
   def search
     headers = {
-      "x-app-id" => "a4f47d7e",
-      "x-app-key" => "bcf4edaee1a304522b9e99e7e984a8f8"
+      "x-app-id" => Figaro.env.app_id,
+      "x-app-key" => Figaro.env.api_key
     }
 
     url = "https://trackapi.nutritionix.com/v2/natural/nutrients"
