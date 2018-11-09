@@ -29,6 +29,15 @@ export default class MealDetails extends Component {
       )
     })
 
+    const calories = () => {
+      var sum = 0
+      for (let i = 0; i < this.state.items.length; i++) {
+        var totalCalories = this.state.items[i].nf_calories * this.state.items[i].servings
+        sum += totalCalories
+      }
+      return sum
+    }
+
     return (
       <div>
         <ItemApiSearch
@@ -43,6 +52,7 @@ export default class MealDetails extends Component {
           userId={this.props.match.params.user_id}
         />
         <div>{itemsList}</div>
+        <div>total calories: {calories()}</div>
       </div>
     )
   }
