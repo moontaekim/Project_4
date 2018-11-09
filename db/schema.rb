@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2018_11_06_192530) do
   create_table "items", force: :cascade do |t|
     t.integer "nf_calories"
     t.string "food_name"
+    t.string "query"
     t.bigint "meal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -3,6 +3,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
     create_table :items do |t|
       t.integer :nf_calories
       t.string :food_name
+      t.string :query
       t.references :meal, foreign_key: true
 
       t.timestamps

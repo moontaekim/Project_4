@@ -24,7 +24,8 @@ export default class MealDetails extends Component {
     const itemsList = this.state.items.map((item, i) => {
       return (
         <div key={i}>
-          {item.name}
+          {item.food_name} |
+            calories: {item.nf_calories}
         </div>
       )
     })

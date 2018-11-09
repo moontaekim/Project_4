@@ -31,7 +31,7 @@ class Api::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :calorie, :serving)
+    params.require(:item).permit(:food_name, :nf_calories, :query)
   end
 
 end
