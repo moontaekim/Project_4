@@ -35,17 +35,20 @@ export default class ItemForm extends Component {
       <div>
 
         <form onSubmit={this.handleSubmit}>
-          <input type='text' name='name'
+          <input type='text' name='food_name'
             value={this.props.items.name}
             onChange={this.handleChange}
+            placeholder="food item"
           />
-          <input type='integer' name='calorie'
+          <input type='integer' name='nf_calories'
             value={this.props.items.calorie}
             onChange={this.handleChange}
+            placeholder="calories"
           />
-          <input type='integer' name='serving'
+          <input type='integer' name='servings'
             value={this.props.items.serving}
             onChange={this.handleChange}
+            placeholder="servings"
           />
           <input type='submit' value='Add Meal' />
         </form>

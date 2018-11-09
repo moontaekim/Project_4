@@ -21,16 +21,15 @@ export default class ItemApiSearch extends Component {
 
   searchFood = async (foodAPI) => {
     const response = await axios.post(`/api/items/search`, foodAPI)
-    const searchedItem = {...this.state.searchedItem}
+    const searchedItem = { ...this.state.searchedItem }
     searchedItem.food_name = response.data.foods[0].food_name
     searchedItem.nf_calories = response.data.foods[0].nf_calories
     searchedItem.servings = searchedItem.servings
     this.setState({ searchedItem })
     this.postItemToMeal(this.state.searchedItem)
   }
+
   postItemToMeal = async (oneItem) => {
-    // const searchedItem = {...this.state.searchedItem}
-    console.log(oneItem)
     const userId = this.props.userId
     const mealId = this.props.mealId
     await axios.post(`/api/users/${userId}/meals/${mealId}/items`, oneItem)
@@ -44,10 +43,12 @@ export default class ItemApiSearch extends Component {
           <input type='query' name='query'
             value={this.state.searchedItem.name}
             onChange={this.handleChange}
+            placeholder="food item"
           />
-          <input type='integer' name='servings'
+        <input type='integer' name='servings'
             value={this.state.searchedItem.servings}
             onChange={this.handleChange}
+            placeholder="servings"
           />
           <input type='submit' value='Add Meal' />
         </form>
