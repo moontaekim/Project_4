@@ -9,8 +9,8 @@ export default class MealDetails extends Component {
   }
 
   fetchItems = async () => {
-    const userId = this.props.match.params.user_id
-    const mealId = this.props.match.params.meal_id
+    const userId = this.props.userId
+    const mealId = this.props.mealId
     const response = await axios.get(`/api/users/${userId}/meals/${mealId}/items`)
     this.setState({ items: response.data })
   }
@@ -42,14 +42,14 @@ export default class MealDetails extends Component {
       <div>
         <ItemApiSearch
           fetchItems={this.fetchItems}
-          mealId={this.props.match.params.meal_id}
-          userId={this.props.match.params.user_id}
+          mealId={this.props.mealId}
+          userId={this.props.userId}
         />
         <ItemForm
           items={this.state.items}
           fetchItems={this.fetchItems}
-          mealId={this.props.match.params.meal_id}
-          userId={this.props.match.params.user_id}
+          mealId={this.props.mealId}
+          userId={this.props.userId}
         />
         <div>{itemsList}</div>
         <div>total calories: {calories()}</div>

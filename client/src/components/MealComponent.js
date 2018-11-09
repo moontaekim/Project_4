@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import AddMealForm from './AddMealForm';
+import MealDetails from './MealDetails';
 
 
 export default class MealPage extends Component {
@@ -46,7 +47,12 @@ export default class MealPage extends Component {
       if (meal.date === this.state.selectedDate) {
         return (
           <div key={i}>
-            <Link to={`/users/${this.props.userId}/meals/${meal.id}`}>{meal.description}</Link>
+            {/* <Link to={`/users/${this.props.userId}/meals/${meal.id}`}>{meal.description}</Link> */}
+            {meal.description}
+            <MealDetails 
+            userId = {this.props.userId}
+            mealId = {meal.id}
+            />
           </div>
         )
       }
