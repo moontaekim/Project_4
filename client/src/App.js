@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
-import UserPage from './components/UserPage';
-import LandingPage from './components/LandingPage';
+
 
 
 class App extends Component {
@@ -9,8 +8,6 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/users" component={LandingPage}/>
-          <Route exact path="/users/:user_id" component={UserPage}/>
         </Switch>
       </Router>
     );
