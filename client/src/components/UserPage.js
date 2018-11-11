@@ -37,15 +37,34 @@ export default class UserPage extends Component {
     this.setState({ selectedDate: event.target.value })
   }
 
+  deleteUser = async () => {
+    await axios.delete(`/api/users/${this.state.user.id}`)
+    this.props.history.push(`/`)
+  }
+
   render() {
+
+    // const calories = () => {
+    //   var sum = 0
+    //   for (let i = 0; i < this.state.meals.length; i++) {
+    //     var totalCalories = this.state.meals[i].nf_calories * this.state.items[i].servings
+    //     sum += totalCalories
+    //   }
+    //   console.log(sum)
+    //   return sum
+    // }
 
     return (
       <div>
+        <h1>{this.state.user.name}</h1>
+        <button onClick={this.deleteUser}>delete user</button>
 
         <input type='date' name='date'
         value={this.state.selectedDate}
         onChange={this.handleChange}
         />
+
+        {/* <div>Total Calories Today: {calories()}</div> */}
 
         <MealComponent 
         userId = {this.props.match.params.user_id}

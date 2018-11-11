@@ -22,6 +22,7 @@ export default class ItemApiSearch extends Component {
 
   searchFood = async (foodAPI) => {
     const response = await axios.post(`/api/items/search`, foodAPI)
+    console.log(response)
     if(response.data.message === "We couldn't match any of your foods"){
       alert("We couldn't match any of your foods")
       return <Redirect to={`/users/${this.props.userId}`}/>
@@ -51,7 +52,7 @@ export default class ItemApiSearch extends Component {
             onChange={this.handleChange}
             placeholder="food item"
           />
-        <input type='integer' name='servings'
+        <input type='number' name='servings'
             value={this.state.searchedItem.servings}
             onChange={this.handleChange}
             placeholder="servings"

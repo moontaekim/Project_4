@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import AddMealForm from './AddMealForm';
 import MealDetails from './MealDetails';
-import styled from 'styled-components'
 import { Accordion, Icon, Button } from 'semantic-ui-react'
 
 

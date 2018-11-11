@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import ItemForm from './ItemForm';
 import ItemApiSearch from './ItemApiSearch';
+import EditItemForm from './EditItemForm';
 
 export default class MealDetails extends Component {
   state = {
@@ -19,12 +20,21 @@ export default class MealDetails extends Component {
     this.setState({ items: response.data })
   }
 
+  deleteItem = async (itemId) => {
+    const userId = this.props.userId
+    const mealId = this.props.mealId
+    await axios.delete(`/api/users/${userId}/meals/${mealId}/items/${itemId}`)
+    this.fetchItems()
+  }
+
   render() {
 
     const itemsList = this.state.items.map((item, i) => {
       return (
         <div key={i}>
-          {item.food_name} | calories: {item.nf_calories * item.servings}
+          {item.food_name} | servings: {item.servings} | calories: {item.nf_calories * item.servings}
+          <button onClick={() => this.deleteItem(item.id)}>delete Item</button>
+          <EditItemForm/>
         </div>
       )
     })
