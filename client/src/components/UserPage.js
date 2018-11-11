@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import MealComponent from './MealComponent';
+import EditUserForm from './EditUserForm';
 
 
 export default class UserPage extends Component {
@@ -58,6 +59,10 @@ export default class UserPage extends Component {
       <div>
         <h1>{this.state.user.name}</h1>
         <button onClick={this.deleteUser}>delete user</button>
+        <EditUserForm
+        userId = {this.props.match.params.user_id}
+        fetchData = {this.fetchData}
+        />
 
         <input type='date' name='date'
         value={this.state.selectedDate}
