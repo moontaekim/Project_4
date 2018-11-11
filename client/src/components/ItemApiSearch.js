@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Redirect} from 'react-router-dom'
 import axios from 'axios'
+import { Input } from 'semantic-ui-react';
 
 export default class ItemApiSearch extends Component {
   state = {
@@ -47,17 +48,17 @@ export default class ItemApiSearch extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input type='query' name='query'
+          <Input type='query' name='query'
             value={this.state.searchedItem.name}
             onChange={this.handleChange}
             placeholder="food item"
           />
-        <input type='number' name='servings'
+        <Input type='number' name='servings'
             value={this.state.searchedItem.servings}
             onChange={this.handleChange}
             placeholder="servings"
           />
-          <input type='submit' value='Add Meal' />
+          <Input type='submit' value='Add Food' />
         </form>
       </div>
     )

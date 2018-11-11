@@ -19,7 +19,6 @@ export default class AddUserForm extends Component {
   handleSubmit = async (event) => {
     event.preventDefault()
     await axios.post('/api/users', this.state.newUser)
-    this.props.fetchUsers()
   }
   
   render() {

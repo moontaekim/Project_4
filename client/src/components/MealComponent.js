@@ -3,7 +3,13 @@ import AddMealForm from './AddMealForm';
 import MealDetails from './MealDetails';
 import { Accordion, Icon, Button } from 'semantic-ui-react'
 import axios from 'axios'
+import styled from 'styled-components'
 
+const StyledButton = styled(Button)`
+  &&&{
+    display:inline;
+  }
+`
 
 export default class MealPage extends Component {
   state = {
@@ -57,9 +63,9 @@ export default class MealPage extends Component {
           fetchData={this.props.fetchData}
           userId={this.props.userId}
         />}
-        <Button circular onClick={this.toggleAddMealForm}>
+        <StyledButton onClick={this.toggleAddMealForm}>
           {this.state.toggleAddMealForm ? 'Go Back' : 'Add Meal'}
-        </Button>
+        </StyledButton>
 
         <div>{todaysMeals}</div>
       </div>
