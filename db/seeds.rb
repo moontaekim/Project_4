@@ -23,8 +23,8 @@ meal_four = Meal.create({ description: 'Breakfast', date: 20181107, time: '09:00
 meal_five = Meal.create({ description: 'Lunch', date: 20181107, time: '01:00PM', user_id: user_one.id  })
 
 
-item_one = Item.create({ serving: 2, calorie: 500, name: "Big Mac", meal_id: meal_one.id  })
-item_two = Item.create({ serving: 1, calorie: 100, name: "Chicken Salad", meal_id: meal_two.id  })
-item_three = Item.create({ serving: 3, calorie: 1000, name: "Pizza", meal_id: meal_three.id  })
-item_four = Item.create({ serving: 2, calorie: 700, name: "French Fries", meal_id: meal_one.id  })
-item_five = Item.create({ serving: 1, calorie: 1700, name: "Waffles", meal_id: meal_four.id  })
+item_one = Item.create({ servings: 2, nf_calories: 500, food_name: "Big Mac", query: "Big Mac", meal_id: meal_one.id  })
+item_two = Item.create({ servings: 1, nf_calories: 100, food_name: "Chicken Salad", query: "Chicken Salad", meal_id: meal_two.id  })
+item_three = Item.create({ servings: 3, nf_calories: 1000, food_name: "Pizza", query: "Pizza", meal_id: meal_three.id  })
+item_four = Item.create({ servings: 2, nf_calories: 700, food_name: "French Fries", query: "French Fries", meal_id: meal_one.id  })
+item_five = Item.create({ servings: 1, nf_calories: 1700, food_name: "Waffles", query: "Waffles", meal_id: meal_four.id  })

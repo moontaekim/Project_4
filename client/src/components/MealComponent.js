@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import AddMealForm from './AddMealForm';
 import MealDetails from './MealDetails';
 import { Accordion, Icon, Button } from 'semantic-ui-react'
+import axios from 'axios'
 
 
 export default class MealPage extends Component {
@@ -22,6 +23,11 @@ export default class MealPage extends Component {
     this.setState({ addMeal: !this.state.addMeal })
   }
 
+  deleteMeal = async(mealId) => {
+    console.log(mealId)
+    await axios.delete(`/api/users/${this.props.userId}/meals/${mealId}`)
+    await this.props.fetchData()
+  }
   render() {
     const { activeIndex } = this.state
 
@@ -32,6 +38,7 @@ export default class MealPage extends Component {
             <Accordion.Title active={activeIndex === i} index={i} onClick={this.handleClick}>
               <Icon name='dropdown' />
                 {meal.description}
+                <button onClick={()=> {this.deleteMeal(meal.id)}}>delete meal</button>
             </Accordion.Title>
             <Accordion.Content active={activeIndex === i}>
               <MealDetails 
