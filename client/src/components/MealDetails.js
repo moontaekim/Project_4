@@ -2,7 +2,14 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import ItemForm from './ItemForm';
 import ItemApiSearch from './ItemApiSearch';
-import EditItemForm from './EditItemForm';
+import { Button } from 'semantic-ui-react';
+import styled from 'styled-components'
+
+const StyledButton = styled(Button)`
+  &&&{
+    background:white;
+  }
+`
 
 export default class MealDetails extends Component {
   state = {
@@ -33,8 +40,7 @@ export default class MealDetails extends Component {
       return (
         <div key={i}>
           {item.food_name} | servings: {item.servings} | calories: {item.nf_calories * item.servings}
-          <button onClick={() => this.deleteItem(item.id)}>delete Item</button>
-          <EditItemForm/>
+          <StyledButton circular icon='delete' onClick={() => this.deleteItem(item.id)}/>
         </div>
       )
     })

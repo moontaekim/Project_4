@@ -47,6 +47,7 @@ export default class ItemApiSearch extends Component {
   render() {
     return (
       <div>
+        Search Nutritionix Database:
         <form onSubmit={this.handleSubmit}>
           <Input type='query' name='query'
             value={this.state.searchedItem.name}

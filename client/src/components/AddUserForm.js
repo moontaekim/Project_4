@@ -1,6 +1,21 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Form, Button } from 'semantic-ui-react';
+import styled from 'styled-components'
 
+const StyledForm = styled(Form)`
+&&&{
+  width: 50vw;
+  margin: auto;
+}
+`
+
+const StyledButton = styled(Button)`
+  &&&{
+    background: #5B738E;
+    color: #DDE5F9;
+  }
+`
 export default class AddUserForm extends Component {
   state = {
     newUser: {
@@ -18,25 +33,31 @@ export default class AddUserForm extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault()
-    await axios.post('/api/users', this.state.newUser)
+    const response = await axios.post('/api/users', this.state.newUser)
+    const userId = response.data.id
+    console.log(userId)
+    await this.props.history.push(`/users/${userId}`)
+
   }
   
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <input type='text' name='name'
+        <StyledForm onSubmit={this.handleSubmit}>
+          <Form.Group widths='equal'>
+          <Form.Input fluid type='text' name='name'
             value={this.state.newUser.name}
             onChange={this.handleChange}
             placeholder="User Name"
           />
-          <input type='integer' name='cal_goal'
+          <Form.Input fluid type='integer' name='cal_goal'
             value={this.state.newUser.cal_goal}
             onChange={this.handleChange}
-            placeholder="calories goal"
+            placeholder="Calories Goal"
           />
-          <input type='submit' value='Add User' />
-        </form>      
+          <StyledButton type='submit' value='Add User'> + </StyledButton>
+          </Form.Group>
+        </StyledForm>      
       </div>
     )
   }

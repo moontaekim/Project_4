@@ -9,7 +9,8 @@ import styled from 'styled-components'
 //   /* bottom: 0; */
 // `
 const StyledApp = styled.div`
-  /* background:blue; */
+    background: #D3D4D8;
+
   height: 100vh;
 `
 

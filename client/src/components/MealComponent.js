@@ -7,7 +7,13 @@ import styled from 'styled-components'
 
 const StyledButton = styled(Button)`
   &&&{
-    display:inline;
+    background: #5B738E;
+    color: #DDE5F9;
+  }
+`
+const StyledMealButton = styled(Button)`
+  &&&{
+    background:white;
   }
 `
 
@@ -44,7 +50,7 @@ export default class MealPage extends Component {
             <Accordion.Title active={activeIndex === i} index={i} onClick={this.handleClick}>
               <Icon name='dropdown' />
                 {meal.description}
-                <button onClick={()=> {this.deleteMeal(meal.id)}}>delete meal</button>
+                <StyledMealButton circular icon='delete' onClick={()=> {this.deleteMeal(meal.id)}}/>
             </Accordion.Title>
             <Accordion.Content active={activeIndex === i}>
               <MealDetails 
@@ -64,7 +70,7 @@ export default class MealPage extends Component {
           userId={this.props.userId}
         />}
         <StyledButton onClick={this.toggleAddMealForm}>
-          {this.state.toggleAddMealForm ? 'Go Back' : 'Add Meal'}
+          {this.state.addMeal ? 'Add Meal' : 'Go Back'}
         </StyledButton>
 
         <div>{todaysMeals}</div>

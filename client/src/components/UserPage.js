@@ -2,26 +2,32 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import MealComponent from './MealComponent';
 import EditUserForm from './EditUserForm';
-import { Button, Input, Image } from 'semantic-ui-react';
+import { Button, Input, Image, Header } from 'semantic-ui-react';
 import styled from 'styled-components'
 
-const StyledImage = styled(Image)`
-  margin:auto;
-  `
 const StyledDateInput = styled(Input)`
   display:inline;
 `
-const StyledHeader = styled.h1`
-  display:inline;
+const StyledUserPage = styled.div`
+  display: flex;
+  flex-direction:column;
+  align-items:center;
+  height:100vh;
+  padding-top: 70px;
 `
-
-
+const StyledButton = styled(Button)`
+  &&&{
+    background: #5B738E;
+    color: #DDE5F9;
+  }
+`
 export default class UserPage extends Component {
   state = {
     meals: [],
     user: {},
     dates: [],
     selectedDate: "",
+    modalOpen: false
   }
 
   componentDidMount = async () => {
@@ -55,6 +61,7 @@ export default class UserPage extends Component {
     this.props.history.push(`/`)
   }
 
+  
   render() {
 
     // const calories = () => {
@@ -68,33 +75,34 @@ export default class UserPage extends Component {
     // }
 
     return (
-      <div>
+      <StyledUserPage>
         <div>
-          <StyledImage size='tiny' circular src="https://static1.squarespace.com/static/55cd025ee4b06c2348a067bc/t/59b88151cd0f6831fdd28def/1530255791097/?format=1500w" alt="logo" />
+          <Image size='tiny' circular src="https://static1.squarespace.com/static/55cd025ee4b06c2348a067bc/t/59b88151cd0f6831fdd28def/1530255791097/?format=1500w" alt="logo" />
         </div>
         <div>
-          <StyledHeader>{this.state.user.name}'s Page</StyledHeader>
-          <StyledDateInput type='date' name='date'
-            value={this.state.selectedDate}
-            onChange={this.handleChange}
-          />
+          <Header size='huge'>{this.state.user.name}'s Page</Header>
         </div>
-        <Button onClick={this.deleteUser}>delete user</Button>
-        <EditUserForm
-          userId={this.props.match.params.user_id}
-          fetchData={this.fetchData}
+        <StyledDateInput type='date' name='date'
+          value={this.state.selectedDate}
+          onChange={this.handleChange}
         />
 
         {/* <div>Total Calories Today: {calories()}</div> */}
-
         <MealComponent
           userId={this.props.match.params.user_id}
           meals={this.state.meals}
           selectedDate={this.state.selectedDate}
           fetchData={this.fetchData}
         />
+        <div>
+          <StyledButton onClick={this.deleteUser}>delete user</StyledButton>
+          <EditUserForm
+            userId={this.props.match.params.user_id}
+            fetchData={this.fetchData}
+          />
+        </div>
 
-      </div>
+      </StyledUserPage>
     )
   }
 }
