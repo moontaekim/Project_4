@@ -1,15 +1,22 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import { Input } from 'semantic-ui-react';
+import { Input, Form, Modal, Button } from 'semantic-ui-react';
+import styled from 'styled-components'
 
-
+const StyledButton = styled(Button)`
+  &&&{
+    background: #D3D4D8;
+    color: #5B738E;
+  }
+`
 export default class ItemForm extends Component {
   state = {
     newItem: {
       name: '',
       calorie: '',
       serving: ''
-    }
+    },
+    modalOpen:false
   }
 
   handleChange = (event) => {
@@ -21,6 +28,7 @@ export default class ItemForm extends Component {
   handleSubmit = async (event) => {
     event.preventDefault()
     this.addItem(this.state.newItem)
+    this.toggleEditForm()
   }
 
   addItem = async (newItem) => {
@@ -30,14 +38,21 @@ export default class ItemForm extends Component {
     this.setState({ newItem: response.data })
     this.props.fetchItems()
   }
+  toggleEditForm = async () => {
+    this.setState({ modalOpen: !this.state.modalOpen })
+  }
+  closeModal = () => {
+    this.setState({ modalOpen: false })
+  }
 
-  render() {
-    return (
-      <div>
-        Add Your Own Data:
-        <form onSubmit={this.handleSubmit}>
 
-          <Input type='text' name='food_name'
+  addNewFoodModal = () => (
+    <Modal trigger={<StyledButton circular icon='add' onClick={this.toggleEditForm}/>}
+      open={this.state.modalOpen} onClose={this.closeModal} closeIcon
+    >
+      <Modal.Content form>
+        <Form onSubmit={this.handleSubmit}>
+        <Input type='text' name='food_name'
             value={this.props.items.name}
             onChange={this.handleChange}
             placeholder="food item"
@@ -52,8 +67,17 @@ export default class ItemForm extends Component {
             onChange={this.handleChange}
             placeholder="servings"
           />
-          <Input type='submit' value='Add Food' />
-        </form>
+          <StyledButton type='submit'>+</StyledButton>
+        </Form>
+      </Modal.Content>
+    </Modal>
+  )
+
+  render() {
+    return (
+      <div>
+        Add Your Own Data:
+        {this.addNewFoodModal()}
       </div>
     )
   }

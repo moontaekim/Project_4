@@ -4,6 +4,8 @@ import MealComponent from './MealComponent';
 import EditUserForm from './EditUserForm';
 import { Button, Input, Image, Header } from 'semantic-ui-react';
 import styled from 'styled-components'
+import swal from 'sweetalert'
+
 
 const StyledDateInput = styled(Input)`
   display:inline;
@@ -26,8 +28,7 @@ export default class UserPage extends Component {
     meals: [],
     user: {},
     dates: [],
-    selectedDate: "",
-    modalOpen: false
+    selectedDate: ""
   }
 
   componentDidMount = async () => {
@@ -56,10 +57,25 @@ export default class UserPage extends Component {
     this.setState({ selectedDate: event.target.value })
   }
 
-  deleteUser = async () => {
-    await axios.delete(`/api/users/${this.state.user.id}`)
-    this.props.history.push(`/`)
-  }
+  handleDelete = async () => {
+    swal({
+        title: `Are You Sure You want to Delete ${this.state.user.name} ?`,
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                swal('Success!', { icon: "success" })
+                    .then(async () => {
+                        await axios.delete(`/api/users/${this.state.user.id}`)
+                        this.props.history.push(`/`)
+                      })
+            } else {
+                swal("Successfully Cancelled");
+            }
+        })
+    }
 
   
   render() {
@@ -95,7 +111,7 @@ export default class UserPage extends Component {
           fetchData={this.fetchData}
         />
         <div>
-          <StyledButton onClick={this.deleteUser}>delete user</StyledButton>
+          <StyledButton onClick={this.handleDelete}>delete user</StyledButton>
           <EditUserForm
             userId={this.props.match.params.user_id}
             fetchData={this.fetchData}

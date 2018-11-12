@@ -7,7 +7,8 @@ import styled from 'styled-components'
 
 const StyledButton = styled(Button)`
   &&&{
-    background:white;
+    background: #D3D4D8;
+    color: #5B738E;
   }
 `
 
@@ -34,13 +35,15 @@ export default class MealDetails extends Component {
     this.fetchItems()
   }
 
+
+
   render() {
 
     const itemsList = this.state.items.map((item, i) => {
       return (
         <div key={i}>
           {item.food_name} | servings: {item.servings} | calories: {item.nf_calories * item.servings}
-          <StyledButton circular icon='delete' onClick={() => this.deleteItem(item.id)}/>
+          <StyledButton circular icon="window minimize" onClick={() => this.deleteItem(item.id)} />
         </div>
       )
     })

@@ -4,13 +4,8 @@ import UserPage from './components/UserPage';
 import LandingPage from './components/LandingPage';
 import styled from 'styled-components'
 
-// const NavBar = styled.div`
-//   background: red;
-//   /* bottom: 0; */
-// `
 const StyledApp = styled.div`
-    background: #D3D4D8;
-
+  background: #D3D4D8;
   height: 100vh;
 `
 

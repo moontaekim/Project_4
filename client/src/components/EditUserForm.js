@@ -43,7 +43,7 @@ export default class EditUserForm extends Component {
     this.setState({modalOpen:false})
   }
 
-  addNewPostModal = () => (
+  editUserModal = () => (
     <Modal trigger={<StyledButton onClick={this.toggleEditForm}>Edit User</StyledButton>}
       open={this.state.modalOpen} onClose={this.closeModal} closeIcon
     >
@@ -70,7 +70,7 @@ export default class EditUserForm extends Component {
 
     return (
       <StyledEditUserForm>
-        {this.addNewPostModal()}
+        {this.editUserModal()}
       </StyledEditUserForm>
     )
   }

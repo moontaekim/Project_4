@@ -11,10 +11,8 @@ const StyledButton = styled(Button)`
     color: #DDE5F9;
   }
 `
-const StyledMealButton = styled(Button)`
-  &&&{
-    background:white;
-  }
+
+const StyledMealComponent = styled.div`
 `
 
 export default class MealPage extends Component {
@@ -35,8 +33,7 @@ export default class MealPage extends Component {
     this.setState({ addMeal: !this.state.addMeal })
   }
 
-  deleteMeal = async(mealId) => {
-    console.log(mealId)
+  deleteMeal = async (mealId) => {
     await axios.delete(`/api/users/${this.props.userId}/meals/${mealId}`)
     await this.props.fetchData()
   }
@@ -49,13 +46,13 @@ export default class MealPage extends Component {
           <Accordion key={i}>
             <Accordion.Title active={activeIndex === i} index={i} onClick={this.handleClick}>
               <Icon name='dropdown' />
-                {meal.description}
-                <StyledMealButton circular icon='delete' onClick={()=> {this.deleteMeal(meal.id)}}/>
+              {meal.description}
+              <StyledButton circular icon='delete' onClick={() => { this.deleteMeal(meal.id) }} />
             </Accordion.Title>
             <Accordion.Content active={activeIndex === i}>
-              <MealDetails 
-              userId = {this.props.userId}
-              mealId = {meal.id}
+              <MealDetails
+                userId={this.props.userId}
+                mealId={meal.id}
               />
             </Accordion.Content>
           </Accordion>
@@ -65,15 +62,18 @@ export default class MealPage extends Component {
 
     return (
       <div>
+        <div>
         {this.state.addMeal ? null : <AddMealForm
           fetchData={this.props.fetchData}
           userId={this.props.userId}
         />}
-        <StyledButton onClick={this.toggleAddMealForm}>
-          {this.state.addMeal ? 'Add Meal' : 'Go Back'}
-        </StyledButton>
+        </div>
 
-        <div>{todaysMeals}</div>
+        {this.state.addMeal ? 
+        <StyledButton onClick={this.toggleAddMealForm}>Add Meal</StyledButton>
+        : null}
+
+        <StyledMealComponent>{todaysMeals}</StyledMealComponent>
       </div>
     )
   }
