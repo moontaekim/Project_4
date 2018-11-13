@@ -9,10 +9,14 @@ const StyledButton = styled(Button)`
   &&&{
     background: #5B738E;
     color: #DDE5F9;
+    margin-top: 20px;
   }
 `
-
-const StyledMealComponent = styled.div`
+const StyledMealButton = styled(Button)`
+  &&&{
+    background: #D3D4D8;
+    color: #5B738E;
+  }
 `
 
 export default class MealPage extends Component {
@@ -47,7 +51,7 @@ export default class MealPage extends Component {
             <Accordion.Title active={activeIndex === i} index={i} onClick={this.handleClick}>
               <Icon name='dropdown' />
               {meal.description}
-              <StyledButton circular icon='delete' onClick={() => { this.deleteMeal(meal.id) }} />
+              <StyledMealButton circular icon='delete' onClick={() => { this.deleteMeal(meal.id) }} />
             </Accordion.Title>
             <Accordion.Content active={activeIndex === i}>
               <MealDetails
@@ -73,7 +77,7 @@ export default class MealPage extends Component {
         <StyledButton onClick={this.toggleAddMealForm}>Add Meal</StyledButton>
         : null}
 
-        <StyledMealComponent>{todaysMeals}</StyledMealComponent>
+        <div>{todaysMeals}</div>
       </div>
     )
   }

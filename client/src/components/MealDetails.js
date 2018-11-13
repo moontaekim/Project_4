@@ -11,6 +11,9 @@ const StyledButton = styled(Button)`
     color: #5B738E;
   }
 `
+const StyledTotalCals = styled.div`
+  font-weight:bold;
+`
 
 export default class MealDetails extends Component {
   state = {
@@ -71,7 +74,7 @@ export default class MealDetails extends Component {
           userId={this.props.userId}
         />
         <div>{itemsList}</div>
-        <div>total calories: {calories()}</div>
+        <StyledTotalCals>total calories: {calories()}</StyledTotalCals>
       </div>
     )
   }

@@ -6,7 +6,8 @@ import styled from 'styled-components'
 
 const StyledApp = styled.div`
   background: #D3D4D8;
-  height: 100vh;
+  /* background-size: cover; */
+  height:100vh;
 `
 
 class App extends Component {
@@ -18,7 +19,6 @@ class App extends Component {
             <Route exact path='/' component={LandingPage} />
             <Route path='/users/:user_id' component={UserPage} />
           </Switch>
-          {/* <NavBar>a</NavBar> */}
         </StyledApp>
       </Router>
     );
