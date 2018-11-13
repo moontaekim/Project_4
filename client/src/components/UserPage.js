@@ -109,7 +109,7 @@ export default class UserPage extends Component {
           fetchData={this.fetchData}
         />
         <div>
-          <StyledButton onClick={this.handleDelete}>delete user</StyledButton>
+          <StyledButton onClick={this.handleDelete}>Delete User</StyledButton>
           <EditUserForm
             userId={this.props.match.params.user_id}
             fetchData={this.fetchData}
