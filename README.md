@@ -34,3 +34,4 @@ Fit Camp is a simple application to track your calories. If you forgot to check 
 * D3 integration to show calorie tracking in a line graph
 * A section for users to add their current weight and calories burned. Fitbit integration
 * Have a barcode scanner
+* Have preset meals on days Breakfast, Lunch, Dinner, Snack and let users add to those lists.
