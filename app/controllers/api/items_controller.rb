@@ -7,8 +7,8 @@ class Api::ItemsController < ApplicationController
   end
 
   def create
-    @meal = User.find(params[:user_id]).meals
-    @item = @meal.find(params[:meal_id]).items.create!(item_params)
+    # @meal = User.find(params[:user_id]).meals
+    @item = Meal.find(params[:meal_id]).items.create!(item_params)
     render json: @item
   end
 
