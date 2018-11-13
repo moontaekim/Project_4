@@ -62,7 +62,6 @@ export default class ItemApiSearch extends Component {
     this.setState({ modalOpen: false })
   }
 
-
   addNewFoodModal = () => (
     <Modal trigger={<StyledButton circular icon='add' onClick={this.toggleEditForm}/>}
       open={this.state.modalOpen} onClose={this.closeModal} closeIcon

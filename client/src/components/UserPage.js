@@ -74,20 +74,8 @@ export default class UserPage extends Component {
             }
         })
     }
-
   
   render() {
-
-    // const calories = () => {
-    //   var sum = 0
-    //   for (let i = 0; i < this.state.meals.length; i++) {
-    //     var totalCalories = this.state.meals[i].nf_calories * this.state.items[i].servings
-    //     sum += totalCalories
-    //   }
-    //   console.log(sum)
-    //   return sum
-    // }
-
     return (
       <StyledUserPage>
         <div>
@@ -101,7 +89,6 @@ export default class UserPage extends Component {
           onChange={this.handleChange}
         />
 
-        {/* <div>Total Calories Today: {calories()}</div> */}
         <MealComponent
           userId={this.props.match.params.user_id}
           meals={this.state.meals}

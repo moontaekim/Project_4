@@ -24,7 +24,6 @@ export default class AddUserForm extends Component {
     }
   }
 
-
   handleChange = (event) => {
     const newUser = { ...this.state.newUser }
     newUser[event.target.name] = event.target.value
@@ -35,9 +34,7 @@ export default class AddUserForm extends Component {
     event.preventDefault()
     const response = await axios.post('/api/users', this.state.newUser)
     const userId = response.data.id
-    console.log(userId)
     await this.props.history.push(`/users/${userId}`)
-
   }
   
   render() {

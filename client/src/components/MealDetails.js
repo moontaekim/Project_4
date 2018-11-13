@@ -38,8 +38,6 @@ export default class MealDetails extends Component {
     this.fetchItems()
   }
 
-
-
   render() {
 
     const itemsList = this.state.items.map((item, i) => {

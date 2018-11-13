@@ -66,8 +66,6 @@ export default class EditUserForm extends Component {
   )
 
   render() {
-
-
     return (
       <StyledEditUserForm>
         {this.editUserModal()}
