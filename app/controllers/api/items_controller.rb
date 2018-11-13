@@ -1,8 +1,8 @@
 class Api::ItemsController < ApplicationController
   
   def index
-    @meals = User.find(params[:user_id]).meals
-    @items = @meals.find(params[:meal_id]).items
+    # @meals = User.find(params[:user_id]).meals
+    @items = Meal.find(params[:meal_id]).items
     render json: @items
   end
 
@@ -13,7 +13,8 @@ class Api::ItemsController < ApplicationController
   end
 
   def show
-    @item = User.find(params[:user_id]).meals.find(params[:meal_id]).items.find(params[:id])
+    # @item = User.find(params[:user_id]).
+    @item = Meal.find(params[:meal_id]).items.find(params[:id])
     render json: @item
   end
 

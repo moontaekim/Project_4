@@ -1,24 +1,36 @@
-# README
+# Project 3: Fit Camp
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Fit Camp is a simple application to track your calories. If you forgot to check the nutrition facts on your meal, dont worry! Fit Camp is linked to the Nutritionix Data Base. Search your food and enter the servings and it will automatically populate.
 
-Things you may want to cover:
 
-* Ruby version
+## ERD
+![alt text](https://i.imgur.com/tNC4FVh.jpg)
 
-* System dependencies
+## Wire Frame
+![alt text](https://i.imgur.com/ksaRoMJ.jpg)
 
-* Configuration
+## Links
 
-* Database creation
+[Heroku](https://ancient-shelf-94397.herokuapp.com/users/1)
 
-* Database initialization
+[Trello](https://trello.com/b/rReM72Pp/project-4)
 
-* How to run the test suite
+[GitHub](https://github.com/moontaekim/Project_4)
 
-* Services (job queues, cache servers, search engines, etc.)
+## Tech Used
+1. HTML
+2. CSS
+3. JavaScript
+4. React
+5. Ruby on Rails
+6. Postgresql
+7. Semantic IU
+9. VS Code
+10. Node
+11. Nutritionix API
 
-* Deployment instructions
+## Future Updates
 
-* ...
+* D3 integration to show calorie tracking in a line graph
+* A section for users to add their current weight and calories burned. Fitbit integration
+* Have a barcode scanner
