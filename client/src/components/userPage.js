@@ -6,7 +6,6 @@ import { Button, Input, Image, Header } from 'semantic-ui-react';
 import styled from 'styled-components'
 import swal from 'sweetalert'
 
-
 const StyledDateInput = styled(Input)`
   display:inline;
 `
@@ -14,7 +13,6 @@ const StyledUserPage = styled.div`
   display: flex;
   flex-direction:column;
   align-items:center;
-  /* height:100%; */
   padding-top: 70px;
 `
 const StyledButton = styled(Button)`
@@ -93,7 +91,7 @@ export default class UserPage extends Component {
     return (
       <StyledUserPage>
         <div>
-          <Image size='tiny' circular src="https://static1.squarespace.com/static/55cd025ee4b06c2348a067bc/t/59b88151cd0f6831fdd28def/1530255791097/?format=1500w" alt="logo" />
+          <Image size='small' circular src="https://static1.squarespace.com/static/55cd025ee4b06c2348a067bc/t/59b88151cd0f6831fdd28def/1530255791097/?format=1500w" alt="logo" />
         </div>
         <div>
           <Header size='huge'>{this.state.user.name}'s Page</Header>

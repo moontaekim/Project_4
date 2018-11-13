@@ -6,7 +6,6 @@ import styled from 'styled-components'
 
 const StyledApp = styled.div`
   background: #D3D4D8;
-  /* background-size: cover; */
   height:100vh;
 `
 
