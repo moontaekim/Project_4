@@ -11,7 +11,7 @@ Fit Camp is a simple application to track your calories. If you forgot to check 
 
 ## Links
 
-[Heroku](https://ancient-shelf-94397.herokuapp.com/users/1)
+[Heroku](https://ancient-shelf-94397.herokuapp.com/)
 
 [Trello](https://trello.com/b/rReM72Pp/project-4)
 
