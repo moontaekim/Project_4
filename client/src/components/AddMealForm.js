@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Form, Button, Dropdown } from 'semantic-ui-react'
+import { Form, Button } from 'semantic-ui-react'
 import styled from 'styled-components'
 
 const StyledForm = styled(Form)`

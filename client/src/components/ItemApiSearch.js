@@ -42,7 +42,7 @@ export default class ItemApiSearch extends Component {
     const searchedItem = { ...this.state.searchedItem }
     searchedItem.food_name = response.data.foods[0].food_name
     searchedItem.nf_calories = response.data.foods[0].nf_calories
-    searchedItem.servings = searchedItem.servings
+    // searchedItem.servings = searchedItem.servings
     this.setState({ searchedItem })
     this.postItemToMeal(this.state.searchedItem)
   }

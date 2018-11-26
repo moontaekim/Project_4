@@ -5,6 +5,7 @@ import EditUserForm from './EditUserForm';
 import { Button, Input, Image, Header } from 'semantic-ui-react';
 import styled from 'styled-components'
 import swal from 'sweetalert'
+import CalorieChart from './CalorieChart';
 
 const StyledDateInput = styled(Input)`
   display:inline;
@@ -81,6 +82,10 @@ export default class UserPage extends Component {
         <div>
           <Image size='small' circular src="https://static1.squarespace.com/static/55cd025ee4b06c2348a067bc/t/59b88151cd0f6831fdd28def/1530255791097/?format=1500w" alt="logo" />
         </div>
+        <CalorieChart 
+        meals={this.state.meals}
+        userId={this.props.match.params.user_id}
+        />
         <div>
           <Header size='huge'>{this.state.user.name}'s Page</Header>
         </div>
