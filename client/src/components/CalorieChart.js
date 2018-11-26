@@ -28,13 +28,11 @@ export default class CalorieChart extends Component {
           allItems.push(response.data)
           this.setState({allItems})
         })
-
     })
   }
 
 
   render() {
-
     return (
       <div>
         CALORIE CHART
