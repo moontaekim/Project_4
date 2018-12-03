@@ -27,12 +27,14 @@ export default class UserPage extends Component {
     meals: [],
     user: {},
     dates: [],
+    allItems: [],
     selectedDate: ""
   }
 
   componentDidMount = async () => {
     await this.getTodaysDate()
     await this.fetchData()
+    await this.fetchItems()
   }
 
   fetchData = async () => {
@@ -42,6 +44,17 @@ export default class UserPage extends Component {
     this.setState({ meals: response.data, user: responseUser.data })
   }
 
+  fetchItems = async () => {
+    const allItems = []
+    await this.state.meals.map((meal) => {
+      const userId = this.props.userId
+      axios.get(`/api/users/${userId}/meals/${meal.id}/items`)
+        .then((response) => {
+          allItems.push(response.data)
+        })
+      })
+      this.setState({allItems})
+  }
   getTodaysDate = async () => {
     const month = await new Date().getMonth()
     var day = await new Date().getDate()
@@ -84,7 +97,7 @@ export default class UserPage extends Component {
         </div>
         <CalorieChart 
         meals={this.state.meals}
-        userId={this.props.match.params.user_id}
+        allItems={this.state.allItems}
         />
         <div>
           <Header size='huge'>{this.state.user.name}'s Page</Header>

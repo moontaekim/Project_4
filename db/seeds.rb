@@ -20,7 +20,6 @@ meal_three = Meal.create({ description: 'Dinner', date: 20181106, time: '06:00PM
 
 
 meal_four = Meal.create({ description: 'Breakfast', date: 20181107, time: '09:00AM', user_id: user_one.id  })
-meal_five = Meal.create({ description: 'Lunch', date: 20181107, time: '01:00PM', user_id: user_one.id  })
 
 
 item_one = Item.create({ servings: 2, nf_calories: 500, food_name: "Big Mac", query: "Big Mac", meal_id: meal_one.id  })
