@@ -98,6 +98,7 @@ export default class UserPage extends Component {
         <CalorieChart 
         meals={this.state.meals}
         allItems={this.state.allItems}
+        selectedDate={this.state.selectedDate}
         />
         <div>
           <Header size='huge'>{this.state.user.name}'s Page</Header>

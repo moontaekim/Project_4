@@ -70,6 +70,7 @@ export default class MealPage extends Component {
         {this.state.addMeal ? null : <AddMealForm
           fetchData={this.props.fetchData}
           userId={this.props.userId}
+          selectedDate={this.props.selectedDate}
         />}
         </div>
 

@@ -26,7 +26,7 @@ export default class AddMealForm extends Component {
   state = {
     newMeal: {
       description: '',
-      date: '',
+      date: this.props.selectedDate,
       time: ''
     }
   }
@@ -61,10 +61,10 @@ export default class AddMealForm extends Component {
               placeholder="Description"
             />
 
-            <Form.Input type='date' name='date'
+            {/* <Form.Input type='date' name='date'
               value={this.state.newMeal.date}
               onChange={this.handleChange}
-            />
+            /> */}
             <StyledButton type='submit' value='Add Meal' > + </StyledButton>
           </StyledFormGroup>
         </StyledForm>
