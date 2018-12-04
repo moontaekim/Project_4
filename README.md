@@ -1,4 +1,4 @@
-# Project 3: Fit Camp
+# Project 4: Fit Camp
 
 Fit Camp is a simple application to track your calories. If you forgot to check the nutrition facts on your meal, dont worry! Fit Camp is linked to the Nutritionix Data Base. Search your food and enter the servings and it will automatically populate.
 
@@ -11,7 +11,7 @@ Fit Camp is a simple application to track your calories. If you forgot to check 
 
 ## Links
 
-[Heroku](https://ancient-shelf-94397.herokuapp.com/users/1)
+[Heroku](https://ancient-shelf-94397.herokuapp.com/)
 
 [Trello](https://trello.com/b/rReM72Pp/project-4)
 
