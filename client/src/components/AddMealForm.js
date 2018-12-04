@@ -13,6 +13,7 @@ const StyledFormGroup = styled(Form.Group)`
   &&&{
     display:flex;
     flex-direction: column;
+    margin-top:5px;
   }
 `
 const StyledButton = styled(Button)`
@@ -34,6 +35,7 @@ export default class AddMealForm extends Component {
   handleSubmit = async (event) => {
     event.preventDefault()
     this.addMeal(this.state.newMeal)
+    this.props.toggleAddMealForm()
   }
 
   handleChange = (event) => {
@@ -60,11 +62,7 @@ export default class AddMealForm extends Component {
               onChange={this.handleChange}
               placeholder="Description"
             />
-
-            {/* <Form.Input type='date' name='date'
-              value={this.state.newMeal.date}
-              onChange={this.handleChange}
-            /> */}
+            
             <StyledButton type='submit' value='Add Meal' > + </StyledButton>
           </StyledFormGroup>
         </StyledForm>

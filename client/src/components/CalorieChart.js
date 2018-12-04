@@ -19,6 +19,7 @@ export default class CalorieChart extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     const { meals, allItems, selectedDate } = nextProps
 
+
     const mealId = meals.map((meal) => {
       if (meal.date === selectedDate) {
         return meal.id
@@ -53,12 +54,15 @@ export default class CalorieChart extends Component {
       .scaleLinear()
       .domain([0, 3000])
       .range([0, width])
-      
+
     return { allItems, meals, selectedDate, totalDailyCal, xScale }
   }
 
-  render() {
+  componentDidMount = async() => {
+    // await this.props.fetchData()
+  }
 
+  render() {
     return (
       <div>
         <StyledProgressbar width={width} height={height}>

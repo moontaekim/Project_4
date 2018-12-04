@@ -71,6 +71,7 @@ export default class MealPage extends Component {
           fetchData={this.props.fetchData}
           userId={this.props.userId}
           selectedDate={this.props.selectedDate}
+          toggleAddMealForm={this.toggleAddMealForm}
         />}
         </div>
 

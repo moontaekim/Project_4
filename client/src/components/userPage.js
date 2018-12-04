@@ -20,6 +20,7 @@ const StyledButton = styled(Button)`
   &&&{
     background: #5B738E;
     color: #DDE5F9;
+    margin-top:5px;
   }
 `
 export default class UserPage extends Component {
@@ -99,6 +100,8 @@ export default class UserPage extends Component {
         meals={this.state.meals}
         allItems={this.state.allItems}
         selectedDate={this.state.selectedDate}
+        fetchData={this.fetchData}
+        fetchItems={this.fetchItems}
         />
         <div>
           <Header size='huge'>{this.state.user.name}'s Page</Header>
