@@ -57,6 +57,7 @@ export default class MealPage extends Component {
               <MealDetails
                 userId={this.props.userId}
                 mealId={meal.id}
+                fetchData={this.props.fetchData}
               />
             </Accordion.Content>
           </Accordion>

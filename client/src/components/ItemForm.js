@@ -37,6 +37,7 @@ export default class ItemForm extends Component {
     const response = await axios.post(`/api/users/${userId}/meals/${mealId}/items`, newItem)
     this.setState({ newItem: response.data })
     this.props.fetchItems()
+    this.props.fetchData()
   }
   toggleEditForm = async () => {
     this.setState({ modalOpen: !this.state.modalOpen })

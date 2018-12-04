@@ -45,6 +45,7 @@ export default class ItemApiSearch extends Component {
     // searchedItem.servings = searchedItem.servings
     this.setState({ searchedItem })
     this.postItemToMeal(this.state.searchedItem)
+    this.props.fetchData()
   }
 
   postItemToMeal = async (oneItem) => {

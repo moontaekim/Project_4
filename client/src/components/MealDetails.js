@@ -42,10 +42,10 @@ export default class MealDetails extends Component {
 
     const itemsList = this.state.items.map((item, i) => {
       return (
-        <div key={i}>
-          {item.food_name} | servings: {item.servings} | calories: {item.nf_calories * item.servings}
+        <ul key={i}>
+          <li>{item.food_name} | servings: {item.servings} | calories: {item.nf_calories * item.servings}</li>
           <StyledButton circular icon="window minimize" onClick={() => this.deleteItem(item.id)} />
-        </div>
+        </ul>
       )
     })
 
@@ -64,12 +64,16 @@ export default class MealDetails extends Component {
           fetchItems={this.fetchItems}
           mealId={this.props.mealId}
           userId={this.props.userId}
+          fetchData={this.props.fetchData}
+
         />
         <ItemForm
           items={this.state.items}
           fetchItems={this.fetchItems}
           mealId={this.props.mealId}
           userId={this.props.userId}
+          fetchData={this.props.fetchData}
+
         />
         <div>{itemsList}</div>
         <StyledTotalCals>total calories: {calories()}</StyledTotalCals>

@@ -5,6 +5,10 @@ import * as d3 from "d3";
 
 const StyledProgressbar = styled.svg`
   background:black;
+
+`
+const StyledCalGoal = styled.span`
+  float: right;
 `
 const height = 70;
 const width = 400;
@@ -17,7 +21,7 @@ export default class CalorieChart extends Component {
   xAxis = d3.axisBottom()
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const { meals, allItems, selectedDate } = nextProps
+    const { meals, allItems, selectedDate, calGoal } = nextProps
 
 
     const mealId = meals.map((meal) => {
@@ -52,14 +56,10 @@ export default class CalorieChart extends Component {
 
     var xScale = d3
       .scaleLinear()
-      .domain([0, 3000])
+      .domain([0, calGoal])
       .range([0, width])
 
     return { allItems, meals, selectedDate, totalDailyCal, xScale }
-  }
-
-  componentDidMount = async() => {
-    // await this.props.fetchData()
   }
 
   render() {
@@ -68,8 +68,6 @@ export default class CalorieChart extends Component {
         <StyledProgressbar width={width} height={height}>
           <rect width={this.state.xScale(this.state.totalDailyCal)} height={height} fill="red"></rect>
         </StyledProgressbar>
-        <div>{this.state.totalDailyCal}</div>
-
       </div>
     )
   }

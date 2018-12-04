@@ -102,6 +102,7 @@ export default class UserPage extends Component {
         selectedDate={this.state.selectedDate}
         fetchData={this.fetchData}
         fetchItems={this.fetchItems}
+        calGoal={this.state.user.cal_goal}
         />
         <div>
           <Header size='huge'>{this.state.user.name}'s Page</Header>
